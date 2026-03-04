@@ -45,7 +45,7 @@ Add to your `claude_desktop_config.json`:
 
 ## Links
 
-- [Symbol Encoder](https://symbolfyi.com/symbols/)
-- [Unicode Collections](https://symbolfyi.com/collections/)
+- [Symbol Encoder](https://symbolfyi.com/search/)
+- [Unicode Collections](https://symbolfyi.com/collection/)
 - [API Documentation](https://symbolfyi.com/developers/)
 - [PyPI Package](https://pypi.org/project/symbolfyi/)

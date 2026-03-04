@@ -53,8 +53,8 @@ symbolfyi = "symbolfyi.mcp_server:mcp"
 
 [project.urls]
 Homepage = "https://symbolfyi.com"
-"Symbol Encoder" = "https://symbolfyi.com/symbols/"
-"HTML Entities" = "https://symbolfyi.com/collections/"
+"Symbol Encoder" = "https://symbolfyi.com/search/"
+"HTML Entities" = "https://symbolfyi.com/collection/"
 Documentation = "https://symbolfyi.com/developers/"
 Repository = "https://github.com/fyipedia/symbolfyi"
 Issues = "https://github.com/fyipedia/symbolfyi/issues"

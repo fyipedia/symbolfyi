@@ -6,7 +6,7 @@
 
 Pure Python symbol encoder for developers. Compute 11 encoding representations and full Unicode properties for any character. Includes 51 HTML entity mappings, a CLI, MCP server for AI assistants, and an API client for [symbolfyi.com](https://symbolfyi.com/).
 
-> Look up any symbol at [symbolfyi.com](https://symbolfyi.com/) -- [symbol encoder](https://symbolfyi.com/symbols/), [HTML entity collections](https://symbolfyi.com/collections/), [Unicode blocks](https://symbolfyi.com/blocks/)
+> Look up any symbol at [symbolfyi.com](https://symbolfyi.com/) -- [symbol encoder](https://symbolfyi.com/search/), [HTML entity collections](https://symbolfyi.com/collection/), [Unicode blocks](https://symbolfyi.com/search/)
 
 ## Install
 
@@ -168,9 +168,9 @@ Full API documentation at [symbolfyi.com/developers](https://symbolfyi.com/devel
 ## Links
 
 - [Symbol Browser](https://symbolfyi.com/) -- Look up any symbol online
-- [Symbol Encoder](https://symbolfyi.com/symbols/) -- Encode any character into 11 formats
-- [HTML Entity Collections](https://symbolfyi.com/collections/) -- Browse curated symbol collections
-- [Unicode Blocks](https://symbolfyi.com/blocks/) -- Browse symbols by Unicode block
+- [Symbol Encoder](https://symbolfyi.com/search/) -- Encode any character into 11 formats
+- [HTML Entity Collections](https://symbolfyi.com/collection/) -- Browse curated symbol collections
+- [Unicode Blocks](https://symbolfyi.com/search/) -- Browse symbols by Unicode block
 - [API Documentation](https://symbolfyi.com/developers/) -- REST API with free access
 - [Source Code](https://github.com/fyipedia/symbolfyi)
 
