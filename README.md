@@ -51,7 +51,7 @@ Requires the `cli` extra: `pip install symbolfyi[cli]`
 
 ```bash
 # Full symbol info (Unicode properties + all encodings)
-symbolfyi info "->""
+symbolfyi info "->"
 
 # Show all 11 encodings
 symbolfyi encode "*"
@@ -150,7 +150,9 @@ Full API documentation at [symbolfyi.com/developers](https://symbolfyi.com/devel
 - **API client**: HTTP client for symbolfyi.com REST API
 - **Type-safe**: Full type annotations, `py.typed` marker (PEP 561)
 
-## FYIPedia Packages
+## FYIPedia Developer Tools
+
+Part of the [FYIPedia](https://github.com/fyipedia) open-source developer tools ecosystem:
 
 | Package | Description |
 |---------|-------------|
