@@ -16,6 +16,9 @@ Pure Python symbol encoder for developers. Compute 11 encoding representations a
 
 - [Install](#install)
 - [Quick Start](#quick-start)
+- [What You Can Do](#what-you-can-do)
+  - [Symbol Encoding](#symbol-encoding)
+  - [Unicode Properties](#unicode-properties)
 - [CLI](#cli)
 - [MCP Server](#mcp-server)
 - [API Client](#api-client)
@@ -64,6 +67,77 @@ print(info.script)        # Common
 char = lookup_html_entity("&hearts;")
 print(char)               # (heart character)
 ```
+
+## What You Can Do
+
+### Symbol Encoding
+
+When working with special characters in web development, you often need the same symbol in different encoding formats -- an HTML entity for markup, a CSS escape for stylesheets, a JavaScript literal for scripts, or raw UTF-8 bytes for server-side processing. The `get_encodings()` function computes all 11 representations from a single character input, covering every major platform and language.
+
+| Format | Example (U+2192 RIGHTWARDS ARROW) | Use Case |
+|--------|-----------------------------------|----------|
+| Unicode | `U+2192` | Documentation, Unicode charts |
+| HTML Decimal | `&#8594;` | HTML numeric character references |
+| HTML Hex | `&#x2192;` | HTML hexadecimal references |
+| HTML Entity | `&rarr;` | Named HTML entities (51 supported) |
+| CSS | `\2192` | CSS `content` property, pseudo-elements |
+| JavaScript | `\u{2192}` | ES6+ string literals |
+| Python | `\u2192` | Python source code escapes |
+| Java | `\u2192` | Java string literals |
+| UTF-8 Bytes | `e2 86 92` | Network protocols, file encoding |
+| UTF-16 Bytes | `21 92` | Windows APIs, Java internals |
+| URL Encoded | `%E2%86%92` | Query strings, URL paths |
+
+```python
+from symbolfyi import get_encodings
+
+# Encode any symbol into all 11 representation formats
+enc = get_encodings("\u00a9")  # Copyright sign
+print(enc.unicode)        # U+00A9
+print(enc.html_entity)    # &copy;
+print(enc.html_decimal)   # &#169;
+print(enc.css)            # \00A9
+print(enc.javascript)     # \u{A9}
+print(enc.python)         # \u00a9
+print(enc.utf8_bytes)     # c2 a9
+print(enc.url_encoded)    # %C2%A9
+```
+
+Learn more: [Symbol Encoding Tools](https://symbolfyi.com/tools/) · [HTML Entity Collections](https://symbolfyi.com/collection/)
+
+### Unicode Properties
+
+Every character in the Unicode Standard carries a set of properties that describe its behavior and classification. The Unicode General Category (e.g., "Lu" for uppercase letter, "Sm" for math symbol) determines how text processors handle the character. The block identifies which range of the Unicode codespace the character belongs to (e.g., "Arrows", "Mathematical Operators"), while the script property indicates the writing system (e.g., "Latin", "Common"). Bidirectional properties control text layout in mixed left-to-right and right-to-left content.
+
+| Property | Description | Example (U+2665 BLACK HEART SUIT) |
+|----------|-------------|-----------------------------------|
+| Name | Official Unicode character name | `BLACK HEART SUIT` |
+| Category | General category code + name | `So` (Other Symbol) |
+| Block | Unicode block range | `Miscellaneous Symbols` |
+| Script | Writing system | `Common` |
+| Bidirectional | Text direction class | `ON` (Other Neutral) |
+| Combining | Combining class value | `0` (Not Reordered) |
+| Mirrored | Whether glyph mirrors in RTL | `N` |
+| Decomposition | Canonical decomposition | (empty for most symbols) |
+
+```python
+from symbolfyi import get_info
+
+# Retrieve full Unicode properties for any character
+info = get_info("\u2665")  # Black heart suit
+print(info.name)           # BLACK HEART SUIT
+print(info.category)       # So
+print(info.category_name)  # Other Symbol
+print(info.block)          # Miscellaneous Symbols
+print(info.script)         # Common
+print(info.bidirectional)  # ON
+
+# Access the encodings alongside Unicode properties
+print(info.encodings.html_entity)  # &hearts;
+print(info.encodings.css)          # \2665
+```
+
+Learn more: [Unicode Block Reference](https://symbolfyi.com/block/) · [Unicode Script Reference](https://symbolfyi.com/script/)
 
 ## CLI
 
