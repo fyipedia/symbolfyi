@@ -1,6 +1,6 @@
 [project]
 name = "symbolfyi"
-version = "0.2.0"
+version = "0.2.1"
 description = "Pure Python symbol encoder -- 11 encoding formats, Unicode properties, HTML entities, CLI, MCP server, and API client."
 readme = "README.md"
 license = "MIT"
