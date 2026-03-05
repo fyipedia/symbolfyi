@@ -8,6 +8,10 @@ Pure Python symbol encoder for developers. Compute 11 encoding representations a
 
 > Look up any symbol at [symbolfyi.com](https://symbolfyi.com/) -- [symbol encoder](https://symbolfyi.com/search/), [HTML entity collections](https://symbolfyi.com/collection/), [Unicode blocks](https://symbolfyi.com/search/)
 
+<p align="center">
+  <img src="demo.gif" alt="symbolfyi CLI demo" width="800">
+</p>
+
 ## Install
 
 ```bash
