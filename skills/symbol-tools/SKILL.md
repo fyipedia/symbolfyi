@@ -43,6 +43,10 @@ Add to your `claude_desktop_config.json`:
 - Finding HTML entities for symbols (arrows, math operators, currency signs)
 - Converting between encoding formats for cross-platform compatibility
 
+## Demo
+
+![SymbolFYI CLI Demo](https://raw.githubusercontent.com/fyipedia/symbolfyi/main/demo.gif)
+
 ## Links
 
 - [Symbol Encoder](https://symbolfyi.com/search/)
