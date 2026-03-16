@@ -1,6 +1,6 @@
 # symbolfyi
 
-[![PyPI](https://img.shields.io/pypi/v/symbolfyi)](https://pypi.org/project/symbolfyi/)
+[![PyPI version](https://agentgif.com/badge/pypi/symbolfyi/version.svg)](https://pypi.org/project/symbolfyi/)
 [![Python](https://img.shields.io/pypi/pyversions/symbolfyi)](https://pypi.org/project/symbolfyi/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
