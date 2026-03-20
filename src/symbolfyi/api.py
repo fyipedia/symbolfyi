@@ -7,8 +7,9 @@ Usage::
     from symbolfyi.api import SymbolFYI
 
     with SymbolFYI() as api:
-        info = api.encode("->")
-        print(info["encodings"]["html_entity"])
+        items = api.list_categories()
+        detail = api.get_category("example-slug")
+        results = api.search("query")
 """
 
 from __future__ import annotations
@@ -21,122 +22,104 @@ import httpx
 class SymbolFYI:
     """API client for the symbolfyi.com REST API.
 
+    Provides typed access to all symbolfyi.com endpoints including
+    list, detail, and search operations.
+
     Args:
-        base_url: API base URL. Defaults to ``https://symbolfyi.com/api``.
+        base_url: API base URL. Defaults to ``https://symbolfyi.com``.
         timeout: Request timeout in seconds. Defaults to ``10.0``.
     """
 
     def __init__(
         self,
-        base_url: str = "https://symbolfyi.com/api",
+        base_url: str = "https://symbolfyi.com",
         timeout: float = 10.0,
     ) -> None:
         self._client = httpx.Client(base_url=base_url, timeout=timeout)
 
-    # -- HTTP helpers ----------------------------------------------------------
-
     def _get(self, path: str, **params: Any) -> dict[str, Any]:
-        resp = self._client.get(path, params={k: v for k, v in params.items() if v is not None})
+        resp = self._client.get(
+            path,
+            params={k: v for k, v in params.items() if v is not None},
+        )
         resp.raise_for_status()
         result: dict[str, Any] = resp.json()
         return result
 
-    # -- Endpoints -------------------------------------------------------------
+    # -- Endpoints -----------------------------------------------------------
 
-    def symbol(self, slug: str) -> dict[str, Any]:
-        """Get full symbol details by slug.
+    def list_categories(self, **params: Any) -> dict[str, Any]:
+        """List all categories."""
+        return self._get("/api/v1/categories/", **params)
 
-        Args:
-            slug: Symbol slug (e.g. ``"rightwards-arrow"``).
+    def get_category(self, slug: str) -> dict[str, Any]:
+        """Get category by slug."""
+        return self._get(f"/api/v1/categories/" + slug + "/")
 
-        Returns:
-            Dict with character, name, codepoint, category, encodings, etc.
-        """
-        return self._get(f"/symbol/{slug}/")
+    def list_collections(self, **params: Any) -> dict[str, Any]:
+        """List all collections."""
+        return self._get("/api/v1/collections/", **params)
 
-    def search(self, query: str) -> dict[str, Any]:
-        """Search symbols by name, character, or codepoint.
+    def get_collection(self, slug: str) -> dict[str, Any]:
+        """Get collection by slug."""
+        return self._get(f"/api/v1/collections/" + slug + "/")
 
-        Args:
-            query: Search term (e.g. ``"arrow"``, ``"heart"``).
+    def list_faqs(self, **params: Any) -> dict[str, Any]:
+        """List all faqs."""
+        return self._get("/api/v1/faqs/", **params)
 
-        Returns:
-            Dict with results list and query string.
-        """
-        return self._get("/search/", q=query)
+    def get_faq(self, slug: str) -> dict[str, Any]:
+        """Get faq by slug."""
+        return self._get(f"/api/v1/faqs/" + slug + "/")
 
-    def category(self, slug: str) -> dict[str, Any]:
-        """Get all symbols in a Unicode category.
+    def list_glossary(self, **params: Any) -> dict[str, Any]:
+        """List all glossary."""
+        return self._get("/api/v1/glossary/", **params)
 
-        Args:
-            slug: Category slug (e.g. ``"math-symbol"``).
+    def get_term(self, slug: str) -> dict[str, Any]:
+        """Get term by slug."""
+        return self._get(f"/api/v1/glossary/" + slug + "/")
 
-        Returns:
-            Dict with category name, slug, and symbols list.
-        """
-        return self._get(f"/category/{slug}/")
+    def list_guide_categories(self, **params: Any) -> dict[str, Any]:
+        """List all guide categories."""
+        return self._get("/api/v1/guide-categories/", **params)
 
-    def encode(self, char: str) -> dict[str, Any]:
-        """Get all 11 encoding representations for a character.
+    def get_guide_category(self, slug: str) -> dict[str, Any]:
+        """Get guide category by slug."""
+        return self._get(f"/api/v1/guide-categories/" + slug + "/")
 
-        Args:
-            char: Single character to encode (e.g. ``"->"``, ``"*"``).
+    def list_guide_series(self, **params: Any) -> dict[str, Any]:
+        """List all guide series."""
+        return self._get("/api/v1/guide-series/", **params)
 
-        Returns:
-            Dict with character info and encodings object.
-        """
-        return self._get("/encode/", char=char)
+    def get_guide_sery(self, slug: str) -> dict[str, Any]:
+        """Get guide sery by slug."""
+        return self._get(f"/api/v1/guide-series/" + slug + "/")
 
-    def collections(self) -> dict[str, Any]:
-        """List all curated symbol collections.
+    def list_guides(self, **params: Any) -> dict[str, Any]:
+        """List all guides."""
+        return self._get("/api/v1/guides/", **params)
 
-        Returns:
-            Dict with count and collections list.
-        """
-        return self._get("/collections/")
+    def get_guide(self, slug: str) -> dict[str, Any]:
+        """Get guide by slug."""
+        return self._get(f"/api/v1/guides/" + slug + "/")
 
-    def collection(self, slug: str) -> dict[str, Any]:
-        """Get a curated symbol collection with its symbols.
+    def list_symbols(self, **params: Any) -> dict[str, Any]:
+        """List all symbols."""
+        return self._get("/api/v1/symbols/", **params)
 
-        Args:
-            slug: Collection slug (e.g. ``"arrows"``, ``"math"``).
+    def get_symbol(self, slug: str) -> dict[str, Any]:
+        """Get symbol by slug."""
+        return self._get(f"/api/v1/symbols/" + slug + "/")
 
-        Returns:
-            Dict with collection details and symbols list.
-        """
-        return self._get(f"/collection/{slug}/")
+    def search(self, query: str, **params: Any) -> dict[str, Any]:
+        """Search across all content."""
+        return self._get(f"/api/v1/search/", q=query, **params)
 
-    def blocks(self) -> dict[str, Any]:
-        """List all Unicode blocks.
-
-        Returns:
-            Dict with count and blocks list.
-        """
-        return self._get("/blocks/")
-
-    def block(self, slug: str) -> dict[str, Any]:
-        """Get all symbols in a Unicode block.
-
-        Args:
-            slug: Block slug (e.g. ``"arrows"``, ``"mathematical-operators"``).
-
-        Returns:
-            Dict with block details and symbols list.
-        """
-        return self._get(f"/block/{slug}/")
-
-    def symbols(self) -> dict[str, Any]:
-        """List all symbols with basic metadata.
-
-        Returns:
-            Dict with count and symbols list.
-        """
-        return self._get("/symbols/")
-
-    # -- Context manager -------------------------------------------------------
+    # -- Lifecycle -----------------------------------------------------------
 
     def close(self) -> None:
-        """Close the underlying HTTP connection."""
+        """Close the underlying HTTP client."""
         self._client.close()
 
     def __enter__(self) -> SymbolFYI:
