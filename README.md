@@ -137,9 +137,7 @@ print(info.encodings.html_entity)  # &hearts;
 print(info.encodings.css)          # \2665
 ```
 
-Learn more: [Unicode Block Reference](https://symbolfyi.com/block/) · [Unicode Script Reference](https://symbolfyi.com/script/)
-
-## CLI
+Learn more: ## CLI
 
 Requires the `cli` extra: `pip install symbolfyi[cli]`
 
@@ -246,9 +244,7 @@ Full API documentation at [symbolfyi.com/developers](https://symbolfyi.com/devel
 
 ## Learn More About Symbols
 
-- **Browse**: [Symbol Search](https://symbolfyi.com/search/) · [Unicode Blocks](https://symbolfyi.com/block/)
-- **Collections**: [HTML Entities](https://symbolfyi.com/collection/) · [Math Symbols](https://symbolfyi.com/collection/math/) · [Currency Symbols](https://symbolfyi.com/collection/currency/)
-- **Guides**: [Glossary](https://symbolfyi.com/glossary/)
+- **Browse**: [Symbol Search](https://symbolfyi.com/search/) · - **Collections**: [HTML Entities](https://symbolfyi.com/collection/) · - **Guides**: [Glossary](https://symbolfyi.com/glossary/)
 - **API**: [REST API Docs](https://symbolfyi.com/developers/) · [OpenAPI Spec](https://symbolfyi.com/api/openapi.json)
 
 ## Creative FYI Family
