@@ -259,6 +259,17 @@ Part of the [FYIPedia](https://fyipedia.com) open-source developer tools ecosyst
 | unicodefyi | [PyPI](https://pypi.org/project/unicodefyi/) | [npm](https://www.npmjs.com/package/unicodefyi) | Unicode lookup with 17 encodings -- [unicodefyi.com](https://unicodefyi.com/) |
 | fontfyi | [PyPI](https://pypi.org/project/fontfyi/) | [npm](https://www.npmjs.com/package/fontfyi) | Google Fonts metadata & CSS -- [fontfyi.com](https://fontfyi.com/) |
 
+## Embed Widget
+
+Embed [SymbolFYI](https://symbolfyi.com) widgets on any website with [symbolfyi-embed](https://widget.symbolfyi.com):
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/symbolfyi-embed@1/dist/embed.min.js"></script>
+<div data-symbolfyi="entity" data-slug="example"></div>
+```
+
+Zero dependencies · Shadow DOM · 4 themes (light/dark/sepia/auto) · [Widget docs](https://widget.symbolfyi.com)
+
 ## License
 
 MIT
